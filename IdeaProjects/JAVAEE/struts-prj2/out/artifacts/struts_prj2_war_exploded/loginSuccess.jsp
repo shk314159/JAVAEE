@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: ASUS
@@ -8,9 +9,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>seccess</title>
+    <title>success</title>
 </head>
 <body>
-    登录成功
+登录成功！<br/>
+
+第<s:property value="count"></s:property>次登录
 </body>
 </html>

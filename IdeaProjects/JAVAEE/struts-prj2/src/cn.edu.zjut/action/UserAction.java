@@ -5,7 +5,14 @@ import cn.edu.zjut.service.UserService;
 
 public class UserAction {
     private UserBean loginUser;
+    private Integer count=0;
+    public UserAction() {
+        System.out.println("创建了一个 UserAction 类对象。");
+    }
 
+    public Integer getCount() {
+        return count;
+    }
     public UserBean getLoginUser() {
         return loginUser;
     }
@@ -15,6 +22,7 @@ public class UserAction {
     }
 
     public String login() {
+        count++;
         UserService userServ = new UserService();
         if(userServ.login(loginUser)) {
             return "success";

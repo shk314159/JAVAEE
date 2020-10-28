@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: ASUS
@@ -11,6 +12,6 @@
     <title>FAIL</title>
 </head>
 <body>
- 登录失败
+<s:textfield key = "login.fail.label"/>
 </body>
 </html>

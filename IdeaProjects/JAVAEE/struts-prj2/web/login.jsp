@@ -13,7 +13,7 @@
     <title>login</title>
 </head>
 <body>
-<s:form action="UserAction!login" method="post" namespace="/">
+<s:form action="loginAction.action" method="post" namespace="/">
     <s:textfield name = "loginUser.account" key = "用户名"/>
     <s:password name = "loginUser.password" key = "密码"/>
     <s:submit name="submit" value="登录"/>

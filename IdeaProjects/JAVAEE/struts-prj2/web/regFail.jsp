@@ -12,5 +12,5 @@
 </head>
 <body>
 注册失败
-</body>zjut
+</body>
 </html>
