@@ -12,6 +12,6 @@
     <title>FAIL</title>
 </head>
 <body>
-<s:textfield key = "login.fail.label"/>
+登录失败
 </body>
 </html>

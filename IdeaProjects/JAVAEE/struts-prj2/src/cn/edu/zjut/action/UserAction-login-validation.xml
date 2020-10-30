@@ -6,13 +6,13 @@
     <field name="loginUser.account">
         <field-validator type="requiredstring">
             <param name="trim">true</param>
-            <message>用户名不能为空</message>
+            <message key="login.account.null"></message>
         </field-validator>
     </field>
     <field name="loginUser.password">
         <field-validator type="requiredstring">
             <param name="trim">true</param>
-            <message>密码不能为空</message>
+            <message key="login.password.null"></message>
         </field-validator>
     </field>
 </validators>
