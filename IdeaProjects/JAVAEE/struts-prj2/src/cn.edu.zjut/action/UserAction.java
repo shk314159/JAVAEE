@@ -2,8 +2,9 @@ package cn.edu.zjut.action;
 
 import cn.edu.zjut.bean.UserBean;
 import cn.edu.zjut.service.UserService;
+import com.opensymphony.xwork2.ActionSupport;
 
-public class UserAction {
+public class UserAction extends ActionSupport {
     private UserBean loginUser;
     private Integer count=0;
     public UserAction() {
@@ -25,9 +26,11 @@ public class UserAction {
         count++;
         UserService userServ = new UserService();
         if(userServ.login(loginUser)) {
+            this.addActionMessage("登录成功！");
             return "success";
         }
         else {
+            this.addActionError("用户名或密码错误，请重新输入！");
             return "fail";
         }
     }
@@ -50,4 +53,14 @@ public class UserAction {
         }
     }
 
+    public void validate() {
+        String account = loginUser.getAccount();
+        String pwd = loginUser.getPassword();
+        if (account == null || account.equals("")) {
+            this.addFieldError("loginUser.account", "请输入您的用户名！");
+        }
+        if (pwd == null || pwd.equals("")) {
+            this.addFieldError("loginUser.password", "请输入您的密码！");
+        }
+    }
 }

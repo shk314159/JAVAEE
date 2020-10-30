@@ -12,6 +12,7 @@
     <title>success</title>
 </head>
 <body>
+<s:actionmessage></s:actionmessage>
 登录成功！<br/>
 
 第<s:property value="count"></s:property>次登录

@@ -11,9 +11,13 @@
 <html>
 <head>
     <title>login</title>
+    <s:head/>
 </head>
 <body>
-<s:form action="loginAction.action" method="post" namespace="/">
+<s:fielderror/>
+<s:actionerror/>
+<s:actionmessage/>
+<s:form action="login" method="post" namespace="/">
     <s:textfield name = "loginUser.account" key = "用户名"/>
     <s:password name = "loginUser.password" key = "密码"/>
     <s:submit name="submit" value="登录"/>

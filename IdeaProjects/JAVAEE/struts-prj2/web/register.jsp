@@ -7,7 +7,7 @@
     <sx:head parseContent="true" extraLocales="UTF-8"/>
 </head>
 <body>
-<s:form action="registerAction.action" method="post" namespace="/">
+<s:form action="register" method="post" namespace="/">
     <s:textfield name="loginUser.account" key = "用户名"/>
     <s:password name="loginUser.password" key = "密码" />
     <s:password name = "loginUser.repassword" key = "重复面密码"/>
