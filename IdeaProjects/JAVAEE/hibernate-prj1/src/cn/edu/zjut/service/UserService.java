@@ -15,8 +15,4 @@ public class UserService {
         else
             return true;
     }
-    public void register(Customer loginUser) {
-        CustomerDAO dao = new CustomerDAO();
-        dao.save(loginUser);
-    }
 }
