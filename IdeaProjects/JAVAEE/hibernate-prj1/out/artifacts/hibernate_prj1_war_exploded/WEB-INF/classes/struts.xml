@@ -12,5 +12,10 @@
                 method="getAllItems">
         <result name="success">/itemList.jsp</result>
         </action>
+
+        <action name="register" class="cn.edu.zjut.action.UserAction" method="register">
+            <result name="registersuccess">/regSuccess.jsp</result>
+        </action>
     </package>
+
 </struts>

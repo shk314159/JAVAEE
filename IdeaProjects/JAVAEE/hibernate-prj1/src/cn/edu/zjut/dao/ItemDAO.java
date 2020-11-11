@@ -15,7 +15,7 @@ public class ItemDAO {
                 .configure().buildSessionFactory();
         Session session=sf.openSession();
         try {
-            String queryString = "from Item";
+            String queryString = "from ItemBasic";
             Query queryObject = session.createQuery(queryString);
             return queryObject.list();
         } catch (RuntimeException re) {

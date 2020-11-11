@@ -4,13 +4,18 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="cn.edu.zjut.po.Item" table="item" catalog="hibernatedb">
-        <id name="itemID" type="string">
-            <column name="ISBN" length="20" />
-            <generator class="assigned"/>
-        </id>
-        <property name="title" type="string">
-            <column name="title" length="30"/>
-        </property>
+<!--        <id name="itemID" type="string">-->
+<!--            <column name="ISBN" length="20" />-->
+<!--            <generator class="assigned"/>-->
+<!--        </id>-->
+<!--        <property name="title" type="string">-->
+<!--            <column name="title" length="30"/>-->
+<!--        </property>-->
+        <composite-id name="ipk" class="cn.edu.zjut.po.ItemPK">
+            <key-property name="itemID" column="ISBN" length="20"/>
+            <key-property name="title" column="title" length="30"/>
+        </composite-id>
+
         <property name="description" type="string">
             <column name="description" length="100"/>
         </property>
