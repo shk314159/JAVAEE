@@ -1,9 +1,12 @@
 package com.mybatis.po;
 
+import java.util.List;
+
 public class  MyUser {
     private int uid;
     private String uname;
     private  String usex;
+    private List<Orders> ordersList;
     public MyUser(){}
     public MyUser(int uid, String uname, String usex){
         this.uid = uid;
@@ -35,5 +38,13 @@ public class  MyUser {
     }
     public String toString() {
         return (uid + " " + uname + " " + usex);
+    }
+
+    public List<Orders> getOrdersList() {
+        return ordersList;
+    }
+
+    public void setOrdersList(List<Orders> ordersList) {
+        this.ordersList = ordersList;
     }
 }

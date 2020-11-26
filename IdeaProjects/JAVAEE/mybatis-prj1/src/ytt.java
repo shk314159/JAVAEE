@@ -1,5 +1,8 @@
+import com.mybatis.test.TestOneToOne;
+
 public class ytt {
     public static void main(String[] args){
-        System.out.println(123);
+        TestOneToOne a = new TestOneToOne();
+        a.test();
     }
 }

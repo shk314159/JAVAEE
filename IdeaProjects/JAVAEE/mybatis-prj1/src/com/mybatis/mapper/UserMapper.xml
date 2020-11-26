@@ -2,21 +2,61 @@
 <!DOCTYPE mapper
         PUBLIC "-//Mybatis.org/DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mybatis.mapper.UserMapper">
-    <select id="selectUserById" parameterType="Integer"
-            resultType="com.mybatis.po.MyUser">
-        Select * from user where uid = #{uid}
-    </select>
-    <select id="selectAllUser" resultType="com.mybatis.po.MyUser">
-    Select * from user
-    </select>
-    <insert id="addUser" parameterType="com.mybatis.po.MyUser">
-    Insert into user values(#{uid},#{uname},#{usex})
-    </insert>
-    <update id="updateUser" parameterType="com.mybatis.po.MyUser">
-    update user set uname=#{uname}, usex=#{usex} where uid=#{uid}
-    </update>
-    <delete id="deleteUser" parameterType="Integer">
-    delete from user where uid = #{uid}
-    </delete>
+<mapper namespace="com.dao.UserDao">
+
+    <resultMap type="com.pojo.MapUser" id="myResult">
+        <!-- property 是com.pojo.MapUser 类中的属性-->
+        <!-- column 是查询结果的列名，可以来自不同的表-->
+        <id property="m_uid" column="uid"/>
+        <result property="m_uname" column="uname"/>
+        <result property="m_usex" column="usex"/>
+    </resultMap>
+    <parameterMap type="com.pojo.MapUser" id="myParam">
+        <parameter property="m_uid"/>
+        <parameter property="m_uname"/>
+        <parameter property="m_usex"/>
+    </parameterMap>
+    <select id="selectResultMap" resultMap="myResult">
+Select * from user
+</select>
+    <insert id="insertResultMap" parameterMap="myParam">
+    INSERT INTO user VALUES(?,?,?)
+  </insert>
+    <update id="updateResultMap" parameterMap="myParam">
+    UPDATE user SET uname=#{m_uname}, usex=#{m_usex} WHERE uid=#{m_uid}
+  </update>
+    <delete id="deleteResultMap" parameterMap="myParam">
+    DELETE FROM user WHERE uid = #{m_uid}
+  </delete>
+
+
+    <!--  1对多-->
+    <resultMap type="com.mybatis.po.MyUser" id="userAndOrders1">
+        <id property="uid" column="uid"/>
+        <result property="uname" column="uname"/>
+        <result property="usex" column="usex"/>
+        <collection property="ordersList" ofType="com.mybatis.po.Orders" column="uid"
+                    select="com.dao.OrdersDao.selectOrdersById"/>
+    </resultMap>
+    <select id="selectUserOrdersById1" parameterType="Integer" resultMap="userAndOrders1">
+		select * from user where uid = #{id}
+	</select>
+    <!-- 一对多 根据uid查询用户及其关联的订单信息：第二种方法（嵌套结果） -->
+    <resultMap type="com.mybatis.po.MyUser" id="userAndOrders2">
+        <id property="uid" column="uid"/>
+        <result property="uname" column="uname"/>
+        <result property="usex" column="usex"/>
+        <!-- 一对多关联查询，ofType表示集合中的元素类型 -->
+        <collection property="ordersList" ofType="com.mybatis.po.Orders">
+            <id property="id" column="id"/>
+            <result property="ordersn" column="ordersn"/>
+        </collection>
+    </resultMap>
+    <select id="selectUserOrdersById2" parameterType="Integer" resultMap="userAndOrders2">
+		select u.*,o.id,o.ordersn from user u, orders o where u.uid = o.user_id and u.uid=#{id}
+	</select>
+    <!-- 一对多 根据uid查询用户及其关联的订单信息：第三种方法（使用POJO存储结果） -->
+    <select id="selectUserOrdersById3" parameterType="Integer" resultType="com.pojo.SelectUserOrdersById">
+		select u.*,o.id,o.ordersn from user u, orders o where u.uid = o.user_id and u.uid=#{id}
+	</select>
 </mapper>
