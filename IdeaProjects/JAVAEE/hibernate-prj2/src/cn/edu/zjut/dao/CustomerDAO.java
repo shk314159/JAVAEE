@@ -14,10 +14,7 @@ public class CustomerDAO extends BaseHibernateDAO {
         log.debug("finding Customer instance by hql");
         try {
             String queryString = hql;
-            System.out.println(queryString);
             Query queryObject = getSession().createQuery(queryString);
-            //
-            System.out.println("size:" + queryObject.list().size());
             return queryObject.list();
         } catch (RuntimeException re) {
             log.error("find by hql failed", re);

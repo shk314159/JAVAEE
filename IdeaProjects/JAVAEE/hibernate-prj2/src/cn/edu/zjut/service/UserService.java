@@ -19,20 +19,14 @@ public class UserService {
         String password = loginUser.getPassword();
         String hql = "from Customer as user where account='" + account
                 + "' and password='" + password + "'";
-        System.out.println(hql);
+
         CustomerDAO dao = new CustomerDAO();
         List list = dao.findByHql(hql);
         dao.getSession().close();
         if (list.isEmpty()) {
-            //test
-            System.out.println("test Empty");
             return false;
         } else {
-            //test
-            System.out.println("test unEmpty");
-
             session.put("user", account);
-            //test
             request.put("tip", "登录成功！");
             loginUser = (Customer) list.get(0);
             request.put("loginUser", loginUser);

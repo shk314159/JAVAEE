@@ -21,6 +21,10 @@
             <result name="deletesuccess">/login.jsp</result>
             <result name="deletefail">/CURDFail.jsp</result>
         </action>
+
+        <action name="findItems" class="cn.edu.zjut.action.ItemAction" method="findItems">
+            <result name="success">/itemList.jsp</result>
+        </action>
     </package>
 
 </struts>

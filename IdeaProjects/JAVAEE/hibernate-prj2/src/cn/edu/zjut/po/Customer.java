@@ -1,11 +1,11 @@
 package cn.edu.zjut.po;
 
 public class Customer implements java.io.Serializable {
-    private int customerId;
+    private Integer customerId;
     private String account;
     private String password;
     private String name;
-    private int sex;
+    private Integer sex;
     private String birthday;
     private String phone;
     private String email;
@@ -15,12 +15,12 @@ public class Customer implements java.io.Serializable {
     public Customer() {
     }
 
-    public Customer(int customerId) {
+    public Customer(Integer customerId) {
         this.customerId = customerId;
     }
 
-    public Customer(int customerId, String account, String password,
-                    String name, int sex, String birthday, String phone,
+    public Customer(Integer customerId, String account, String password,
+                    String name, Integer sex, String birthday, String phone,
                     String email, String address, String zipcode, String fax) {
         this.customerId = customerId;
         this.account = account;
@@ -35,11 +35,11 @@ public class Customer implements java.io.Serializable {
         this.fax = fax;
     }
 
-    public int getCustomerId() {
+    public Integer getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
 
@@ -67,11 +67,11 @@ public class Customer implements java.io.Serializable {
         this.birthday = birthday;
     }
 
-    public int getSex() {
+    public Integer getSex() {
         return sex;
     }
 
-    public void setSex(int sex) {
+    public void setSex(Integer sex) {
         this.sex = sex;
     }
 

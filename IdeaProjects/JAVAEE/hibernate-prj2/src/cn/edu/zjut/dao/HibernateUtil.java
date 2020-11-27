@@ -14,8 +14,28 @@ public class HibernateUtil {
 
     static {
         try {
-            configuration.configure(configFile);
+            configuration
+//通过 setProperty 方法设置 Hibernate 的连接属性
+                    .setProperty("hibernate.connection.driver_class",
+                            "com.mysql.jdbc.Driver")
+                    .setProperty("hibernate.connection.url",
+                            "jdbc:mysql://localhost:3306/hibernatedb?serverTimezone=GMT")
+                    .setProperty("hibernate.connection.username", "root")
+                    .setProperty("hibernate.hbm2ddl.auto", "create-drop")
+                    .setProperty("hibernate.connection.password", "root")
+                    .setProperty("hibernate.show_sql","true")
+                    .setProperty("hibernate.format_sql", "true")
+                    .setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect")
+                    .setProperty("hibernate.c3p0.max_size", "20")
+                    .setProperty("hibernate.c3p0.min_size","1")
+                    .setProperty("hibernate.c3p0.timeout","10")
+                    .setProperty("hibernate.c3p0.max_statements","50")
+//通过 addResource 方法添加映射文件
+                    .addResource("cn/edu/zjut/po/Customer.hbm.xml")
+                    .addResource("cn/edu/zjut/po/Item.hbm.xml");
             sessionFactory = configuration.buildSessionFactory();
+//            configuration.configure(configFile);
+//            sessionFactory = configuration.buildSessionFactory();
         } catch (Exception e) {
             System.err
                     .println("%%%% Error Creating SessionFactory %%%%");

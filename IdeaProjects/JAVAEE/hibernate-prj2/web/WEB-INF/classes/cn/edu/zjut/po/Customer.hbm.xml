@@ -5,7 +5,7 @@
 <hibernate-mapping>
     <class name="cn.edu.zjut.po.Customer" table="customer"
            catalog="hibernatedb">
-        <id name="customerId" type="int">
+        <id name="customerId" type="java.lang.Integer">
             <column name="customerID"/>
             <generator class="assigned"/>
         </id>
@@ -18,8 +18,8 @@
         <property name="name" type="string">
             <column name="name" length="20"/>
         </property>
-        <property name="sex" type="int">
-            <column name="sex"/>
+        <property name="sex" type="java.lang.Integer">
+            <column name="sex" length="11"/>
         </property>
         <property name="birthday" type="string">
             <column name="birthday" length="10"/>
