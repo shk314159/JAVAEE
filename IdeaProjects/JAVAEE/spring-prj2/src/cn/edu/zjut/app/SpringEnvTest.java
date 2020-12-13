@@ -7,10 +7,7 @@ import org.springframework.context.ApplicationContext;
 import
         org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class SpringEnvTest {
     public static void main(String[] args) {
@@ -42,11 +39,33 @@ public class SpringEnvTest {
 //            System.out.println("数量：" + i.getNumItems());
 //        }
         //set
-        ShoppingCart shoppingCart = (ShoppingCart) ctx.getBean("shoppingcart");
-        Map<Integer,IItemOrder> map = shoppingCart.getItemsOrdered();
-        System.out.println("书名：" + map.get(1).getItem().getTitle());
-        System.out.println("数量：" + map.get(1).getNumItems());
-        System.out.println("书名：" + map.get(2).getItem().getTitle());
-        System.out.println("数量：" + map.get(2).getNumItems());
+//        ShoppingCart shoppingCart = (ShoppingCart) ctx.getBean("shoppingcart");
+//        Set<IItemOrder> set = shoppingCart.getItemsOrdered();
+//        for (IItemOrder i : set) {
+//            System.out.println("书名：" + i.getItem().getTitle());
+//            System.out.println("数量：" + i.getNumItems());
+//        }
+        //map
+//        ShoppingCart shoppingCart = (ShoppingCart) ctx.getBean("shoppingcart");
+//        Map<Integer,IItemOrder> map = shoppingCart.getItemsOrdered();
+//        System.out.println("书名：" + map.get(1).getItem().getTitle());
+//        System.out.println("数量：" + map.get(1).getNumItems());
+//        System.out.println("书名：" + map.get(2).getItem().getTitle());
+//        System.out.println("数量：" + map.get(2).getNumItems());
+//        ShoppingCart shoppingCart = (ShoppingCart) ctx.getBean("shoppingcart");
+//        Properties properties = shoppingCart.getItemsOrdered();
+//        System.out.println(properties.getProperty("1"));
+//        System.out.println(properties.getProperty("2"));
+
+//        System.out.println("getBean(item1)---1");
+//        IItem item11 = (IItem) ctx.getBean("item1");
+//        System.out.println("getBean(item1)---2");
+//        IItem item12 = (IItem) ctx.getBean("item1");
+//        System.out.println("getBean(item2)---1");
+//        IItem item21 = (IItem) ctx.getBean("item2");
+//        System.out.println("getBean(item2)---2");
+//        IItem item22 = (IItem) ctx.getBean("item2");
+
+        IItemOrder itemorder2 = (IItemOrder)ctx.getBean("itemorder2");
     }
 }

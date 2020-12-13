@@ -15,6 +15,9 @@ public class Item implements IItem {
         System.out.println("create Item.");
     }
 
+    public Item(String s) {
+    }
+
     public String getItemID() {
         return itemID;
     }

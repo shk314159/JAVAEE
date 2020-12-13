@@ -35,23 +35,61 @@ http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
         </constructor-arg>
     </bean>
 
-    <bean id="itemorder1" class="cn.edu.zjut.bean.ItemOrder">
+    <bean id="itemorder1" class="cn.edu.zjut.bean.ItemOrder" init-method="init"
+        destroy-method="destory">
         <property name="numItems"> <value>1</value> </property>
         <property name="item"> <ref bean="item1"/> </property>
     </bean>
-    <bean id="itemorder2" class="cn.edu.zjut.bean.ItemOrder">
-        <property name="numItems"> <value>2</value> </property>
-        <property name="item"> <ref bean="item2"/> </property>
+<!--    <bean id="itemorder2" class="cn.edu.zjut.bean.ItemOrderFactory" factory-method="createItemOrder">-->
+<!--        <property name="numItems"> <value>1</value> </property>-->
+<!--        <property name="item"> <ref bean="item1"/> </property>-->
+<!--    </bean>-->
+    <bean id="itemorderFactory" class="cn.edu.zjut.bean.ItemOrderFactory"/>
+    <bean id="itemorder2" class="cn.edu.zjut.bean.ItemOrder"
+          factory-method="createItemOrder"
+          factory-bean="itemorderFactory">
+        <property name="numItems"> <value>1</value> </property>
+        <property name="item"> <ref bean="item1"/> </property>
     </bean>
-
-    <bean id="shoppingcart" class="cn.edu.zjut.bean.ShoppingCart">
-        <property name="itemsOrdered">
-            <map>
-                <entry key="1" value-ref="itemorder1"/>
-                <entry key="2" value-ref="itemorder2"/>
+<!--    list-->
+<!--    <bean id="shoppingcart" class="cn.edu.zjut.bean.ShoppingCart">-->
+<!--        <property name="itemsOrdered">-->
+<!--            <list>-->
 <!--                <ref bean="itemorder1"/>-->
 <!--                <ref bean="itemorder2"/>-->
-            </map>
-        </property>
-    </bean>
+<!--            </list>-->
+<!--        </property>-->
+
+<!--    </bean>-->
+<!--    set-->
+<!--    <bean id="shoppingcart" class="cn.edu.zjut.bean.ShoppingCart">-->
+<!--        <property name="itemsOrdered">-->
+<!--        <set>-->
+<!--            <ref bean="itemorder1"/>-->
+<!--            <ref bean="itemorder2"/>-->
+<!--        </set>-->
+<!--        </property>-->
+
+<!--    </bean>-->
+<!--    map-->
+<!--    <bean id="shoppingcart" class="cn.edu.zjut.bean.ShoppingCart">-->
+<!--        <property name="itemsOrdered">-->
+<!--            <map>-->
+<!--                <entry key="1" value-ref="itemorder1"/>-->
+<!--                <entry key="2" value-ref="itemorder2"/>-->
+<!--            </map>-->
+<!--        </property>-->
+<!--    </bean>-->
+        <bean id="shoppingcart" class="cn.edu.zjut.bean.ShoppingCart">
+            <property name="itemsOrdered">
+                <props>
+                    <prop key="1">
+                        这就只能赋值String
+                    </prop>
+                    <prop key="2">
+                        大骗子
+                    </prop>
+                </props>
+            </property>
+        </bean>
 </beans>

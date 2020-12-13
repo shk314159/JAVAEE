@@ -1,8 +1,20 @@
 package cn.edu.zjut.bean;
 
-public class ItemOrder implements IItemOrder {
+import org.springframework.beans.factory.InitializingBean;
+
+public class ItemOrder implements IItemOrder, InitializingBean {
     private IItem item;
     private int numItems;
+    public void init() {
+        System.out.println("正在执行初始化方法 init...");
+    }
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("正在执行初始化方法 afterPropertiesSet...");
+    }
+
+    public void destory() {
+        System.out.println("正在执行销毁方法 destory...");
+    }
 
     public void incrementNumItems() {
         setNumItems(getNumItems() + 1);
